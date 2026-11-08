@@ -1,0 +1,14 @@
+.gradle/
+.gradle-user/
+.work/
+dist/
+docs/
+**/src/test/
+.idea/
+*.iml
+**/build/
+local.properties
+*.log
+*.hprof
+.DS_Store
+Thumbs.db

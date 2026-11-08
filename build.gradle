@@ -1,0 +1,26 @@
+plugins {
+    id 'base'
+}
+
+allprojects {
+    group = 'com.gamemid.memory'
+    version = '0.1.0'
+}
+
+subprojects {
+    plugins.withId('java') {
+        java {
+            sourceCompatibility = JavaVersion.VERSION_1_8
+            targetCompatibility = JavaVersion.VERSION_1_8
+        }
+    }
+    tasks.withType(JavaCompile).configureEach {
+        options.encoding = 'UTF-8'
+        options.release = 8
+    }
+}
+
+tasks.named('wrapper') {
+    gradleVersion = '8.14.4'
+    distributionType = Wrapper.DistributionType.BIN
+}

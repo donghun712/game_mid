@@ -1,0 +1,24 @@
+plugins {
+    id 'application'
+}
+
+application {
+    mainClass = 'com.gamemid.memory.lwjgl3.Lwjgl3Launcher'
+}
+
+dependencies {
+    implementation project(':core')
+    implementation "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
+    runtimeOnly "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+    runtimeOnly "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
+}
+
+sourceSets.main.resources.srcDirs += [rootProject.file('assets')]
+
+tasks.named('run', JavaExec) {
+    workingDir = rootProject.file('assets')
+    if (System.getProperty('os.name').toLowerCase().contains('mac')) {
+        jvmArgs '-XstartOnFirstThread'
+    }
+}
+
